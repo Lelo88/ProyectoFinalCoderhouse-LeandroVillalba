@@ -11,11 +11,11 @@
                         style="width:60%; position: relative;left: 62px;padding-top: 20px;"
                         src="{{ request.user.profile.image.url }}" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title font-weight-bold">{{ request.usuario.first_name }}</h5>
+                        <h5 class="card-title font-weight-bold">{{request.usuario.first_name}}</h5>
                         <h6 class="card-title font-weight-bold">@{{ request.usuario.username }}</h6>
                         
 
-                        <p class="card-text">{{ request.usuario.biografia }}</p>
+                        <p class="card-text">{{ request.user.profile }}</p>
                         <h6 class="card-title font-weight-bold">
                         {{ request.user.profile.followers.count }} Followers   
                         {{ request.user.profile.following.count }} Following
