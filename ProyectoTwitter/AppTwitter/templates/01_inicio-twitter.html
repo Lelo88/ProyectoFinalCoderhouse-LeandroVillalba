@@ -11,11 +11,11 @@
                         style="width:60%; position: relative;left: 62px;padding-top: 20px;"
                         src="{{ request.user.profile.image.url }}" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title font-weight-bold">{{ request.user.first_name }}</h5>
-                        <h6 class="card-title font-weight-bold">@{{ request.user }}</h6>
+                        <h5 class="card-title font-weight-bold">{{ request.usuario.first_name }}</h5>
+                        <h6 class="card-title font-weight-bold">@{{ request.usuario.username }}</h6>
                         
 
-                        <p class="card-text">{{ request.user.profile.bio }}</p>
+                        <p class="card-text">{{ request.usuario.biografia }}</p>
                         <h6 class="card-title font-weight-bold">
                         {{ request.user.profile.followers.count }} Followers   
                         {{ request.user.profile.following.count }} Following
@@ -77,11 +77,9 @@
                             alt="" class="avator">
                         <div class="tweet-header-info">
                             <a href="">
-                            {{ posteo.usuario.first_name }} 
-                            </a>
-                            <span>@{{ posteo.user }}</span><span>{{ post.timestamp|naturaltime }}
+                            {{posteo.usuario_posteo.first_name}}</a><span>@{{posteo.usuario_posteo.username}}</span><span>{{ posteo.hora_posteo|naturaltime }}
                             </span>
-                            <p>{{ posteo.contenido}}</p>
+                            <p>{{posteo.contenido}}</p>
                         </div>
                     </div>
                     <div class="tweet-info-counts">
