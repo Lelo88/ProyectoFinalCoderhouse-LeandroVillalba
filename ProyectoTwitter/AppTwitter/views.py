@@ -32,3 +32,7 @@ def registro(request):
     contexto = {'formulario':formulario_registro}
     return render(request, '03_registro.html', contexto)
             
+def borrar_tweet(request, id_posteo):
+    posteo = Posteo.objects.get(id=id_posteo)
+    posteo.delete()
+    return redirect('Inicio')
