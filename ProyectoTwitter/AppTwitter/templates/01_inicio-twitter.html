@@ -125,10 +125,10 @@
                         </div>
 
                         <!-- DELETE -->
-                        {% if request.user == posteo.usuario %}
+                        {% if request.user == posteo.usuario_posteo %}
                         <div class="trash">
-                            <a href="{% url 'Borrar-Tweet' posteo.id %}" style="background: white; border: none;">
-                                <i class="fa fa-trash-o" style="color:#63849e; font-size: 20px" aria-hidden="true"></i>
+                            <a href="{% url 'BorrarTweet' posteo.id %}" style="background: white; border: none;">
+                                <i class="fa-solid fa-trash" style="color:#63849e; font-size: 20px" aria-hidden="true"></i>
                             </a>
                         </div>
                         {% endif %}

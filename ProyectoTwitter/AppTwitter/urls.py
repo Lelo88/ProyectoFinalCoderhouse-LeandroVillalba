@@ -8,5 +8,5 @@ urlpatterns = [
     path('registro/', registro, name = 'Registro'),
     path('login/', LoginView.as_view(template_name='04_login.html'), name='Login'),
     path('login/', LogoutView.as_view(), name='Logout'),
-    path('borrado/<int:id>', borrar_tweet, name='BorrarTweet')
+    path('borrado/<int:id_posteo>', borrar_tweet, name='BorrarTweet')
 ]
