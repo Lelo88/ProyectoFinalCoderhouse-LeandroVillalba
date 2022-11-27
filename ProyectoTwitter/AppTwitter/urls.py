@@ -2,7 +2,7 @@ from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import borrar_tweet, editar, inicio, perfil, registro
+from .views import borrar_tweet, editar, inicio, perfil, registro, seguir_usuario
 
 
 
@@ -14,4 +14,5 @@ urlpatterns = [
     path('borrado/<int:id_posteo>', borrar_tweet, name='BorrarTweet'),
     path('perfil/<str:nombre_usuario>/', perfil, name='Perfil'),
     path('editar/',editar ,name='Editar'),
+    path('seguir/<str:nombre_usuario>/', seguir_usuario, name='Seguir'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

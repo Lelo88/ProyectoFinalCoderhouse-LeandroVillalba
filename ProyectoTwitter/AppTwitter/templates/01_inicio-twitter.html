@@ -15,10 +15,10 @@
                         <h6 class="card-title font-weight-bold">@{{ request.user.username }}</h6>
                         
 
-                        <p class="card-text">{{ request.user.profile }}</p>
+                        <p class="card-text">{{ request.user.usuario }}</p>
                         <h6 class="card-title font-weight-bold">
-                        {{ request.user.profile.followers.count }} Followers   
-                        {{ request.user.profile.following.count }} Following
+                        {{ request.user.usuario.seguidores.count }} Seguidores  
+                        {{ request.user.usuario.seguir.count }} Seguidos
                         </h6>
                         <a href="#" class="btn  text-white rounded-pill">Mi perfil</a>
                     </div>

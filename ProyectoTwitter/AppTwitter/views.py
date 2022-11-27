@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
-from .models import Posteo, Usuario
+from .models import Posteo, Usuario, Relaciones
 from .forms import Registro, FormularioPosteo, EditarUsuario, EditarPerfil
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def inicio(request):
     posteos = Posteo.objects.all()
     if request.method == 'POST':
@@ -44,6 +46,7 @@ def perfil(request, nombre_usuario):
     contexto = {'usuario': nombre_usuario, 'posteos': posteos}
     return render(request, '05_perfil.html', contexto)
 
+@login_required
 def editar(request):
     if request.method == 'POST':
         formulario_usuario = EditarUsuario(request.POST, instance = request.user)
@@ -61,3 +64,11 @@ def editar(request):
     
     return render(request, '06_editar.html', contexto)
         
+@login_required
+def seguir_usuario(request, nombre_usuario):
+    usuario_actual = request.user
+    seguir_usuario = User.objects.get(username = nombre_usuario)
+    seguir_usuario_id = seguir_usuario
+    rel = Relaciones(de_usuario = usuario_actual, a_usuario=seguir_usuario_id)
+    rel.save()
+    return redirect('Inicio')
