@@ -9,7 +9,7 @@
                 <div class="card " style="width: 18rem; text-align:center;border-radius: 20px;">
                     <img class="card-img-top rounded-circle"
                         style="width:60%; position: relative;left: 62px;padding-top: 20px;"
-                        src="{{ request.user.profile.image.url }}" alt="Card image cap">
+                        src="{{ request.user.usuario.imagen.url }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">{{request.user.first_name}}</h5>
                         <h6 class="card-title font-weight-bold">@{{ request.user.username }}</h6>
@@ -38,7 +38,7 @@
                 <div class="d-flex">
                     <div class="col-xs">
                         <!-- Image form -->
-                        <img src="{{ request.user.profile.image.url }}" alt="" class="avator">
+                        <img src="{{ request.user.usuario.imagen.url }}" alt="" class="avator">
                         <!-- Formulario -->
                     </div>
 
@@ -73,7 +73,7 @@
                 <!-- FOR LOOP HERE -->
                 <div class="tweet-wrap" style="border-radius:20px">
                     <div class="tweet-header">
-                        <img src="{{ post.user.profile.image.url }}"
+                        <img src="{{ posteo.usuario_posteo.usuario.imagen.url }}"
                             alt="" class="avator">
                         <div class="tweet-header-info">
                             <a href="">
@@ -128,7 +128,8 @@
                         {% if request.user == posteo.usuario_posteo %}
                         <div class="trash">
                             <a href="{% url 'BorrarTweet' posteo.id %}" style="background: white; border: none;">
-                                <i class="fa-solid fa-trash" style="color:#63849e; font-size: 20px" aria-hidden="true"></i>
+                                <i class="fa-trash" style="color:#63849e; font-size: 20px" aria-hidden="true"></i>
+                                
                             </a>
                         </div>
                         {% endif %}
