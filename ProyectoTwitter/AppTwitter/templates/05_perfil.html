@@ -52,7 +52,7 @@
                         <img src="{{ post.usuario_posteo.usuario.imagen.url }}"
                             alt="" class="avator">
                         <div class="tweet-header-info">
-                            {{ post.usuario_posteo.first_name }} <span>@{{ post.usuario_posteo.username }}</span><span>{{ post.timestamp|naturaltime }}
+                            {{ post.usuario_posteo.first_name }} <span>@{{ post.usuario_posteo.username }}</span><span>{{ post.hora_posteo|naturaltime }}
                             </span>
                             <p>{{ post.contenido }}</p>
                         </div>
@@ -123,12 +123,12 @@
         <div class="sidebar m-5 d-none d-xl-block">
             <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                    Who to Follow
+                    Seguir a
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
+                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@LionelMessi</a></li>
+                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@Coderhouse</a></li>
+                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@CAIndependiente</a></li>
                 </ul>
             </div>
         </div>

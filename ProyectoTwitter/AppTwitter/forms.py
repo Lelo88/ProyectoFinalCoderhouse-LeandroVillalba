@@ -1,5 +1,5 @@
 from django import forms
-from .models import Posteo
+from .models import Posteo, Usuario
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -15,3 +15,14 @@ class FormularioPosteo(forms.ModelForm):
     class Meta:
         model = Posteo
         fields = ['contenido']
+        
+class EditarUsuario(forms.ModelForm):
+    
+    class Meta:
+        model = User
+        fields = ['first_name', 'username']
+        
+class EditarPerfil(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ['biografia', 'imagen']

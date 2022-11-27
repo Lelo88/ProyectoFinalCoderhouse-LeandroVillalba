@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Posteo, Usuario
-from .forms import Registro, FormularioPosteo
+from .forms import Registro, FormularioPosteo, EditarUsuario, EditarPerfil
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -43,3 +43,21 @@ def perfil(request, nombre_usuario):
     posteos =  Posteo.objects.filter(usuario_posteo=nombre_usuario)
     contexto = {'usuario': nombre_usuario, 'posteos': posteos}
     return render(request, '05_perfil.html', contexto)
+
+def editar(request):
+    if request.method == 'POST':
+        formulario_usuario = EditarUsuario(request.POST, instance = request.user)
+        formulario_perfil = EditarPerfil(request.POST, request.FILES, instance=request.user.usuario)
+        
+        if formulario_usuario.is_valid() and formulario_perfil.is_valid():
+            formulario_usuario.save()
+            formulario_perfil.save()
+            return redirect('Inicio')
+    else:
+        formulario_usuario = EditarUsuario(instance=request.user)
+        formulario_perfil = EditarPerfil()
+        
+    contexto = {'formulario_usuario': formulario_usuario, 'formulario_perfil': formulario_perfil}
+    
+    return render(request, '06_editar.html', contexto)
+        
