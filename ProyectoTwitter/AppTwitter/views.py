@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Posteo, Usuario
 from .forms import Registro, FormularioPosteo
+from django.contrib.auth.models import User
 
 # Create your views here.
 def inicio(request):
@@ -36,3 +37,9 @@ def borrar_tweet(request, id_posteo):
     posteo = Posteo.objects.get(id=id_posteo)
     posteo.delete()
     return redirect('Inicio')
+
+def perfil(request, nombre_usuario):
+    nombre_usuario = User.objects.get(username=nombre_usuario)
+    posteos =  Posteo.objects.filter(usuario_posteo=nombre_usuario)
+    contexto = {'usuario': nombre_usuario, 'posteos': posteos}
+    return render(request, '05_perfil.html', contexto)

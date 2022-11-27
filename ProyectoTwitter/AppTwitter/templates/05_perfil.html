@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
-
     <div id="main" class="container-fluid d-flex">
         <!-- Barra Izquierda -->
         <div class="sidebar m-5 d-none d-md-block">
@@ -9,18 +8,27 @@
                 <div class="card " style="width: 18rem; text-align:center;border-radius: 20px;">
                     <img class="card-img-top rounded-circle"
                         style="width:60%; position: relative;left: 62px;padding-top: 20px;"
-                        src="{{ request.user.usuario.imagen.url }}" alt="Card image cap">
+                        src="{{ usuario.usuario.imagen.url }}" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title font-weight-bold">{{request.user.first_name}}</h5>
-                        <h6 class="card-title font-weight-bold">@{{ request.user.username }}</h6>
+                        <h5 class="card-title font-weight-bold">{{ usuario.first_name }}</h5>
+                        <h6 class="card-title font-weight-bold">@{{ usuario.username }}</h6>
                         
 
-                        <p class="card-text">{{ request.user.profile }}</p>
+                        <p class="card-text">{{ usuario.usuario.biografia }}</p>
                         <h6 class="card-title font-weight-bold">
-                        {{ request.user.profile.followers.count }} Followers   
-                        {{ request.user.profile.following.count }} Following
+                        {{ user.profile.followers.count }} Followers   
+                        {{ user.profile.following.count }} Following
                         </h6>
-                        <a href="#" class="btn  text-white rounded-pill">Mi perfil</a>
+                        {% if request.user.is_authenticated %}
+                            {% if user.username != request.user.username %}
+                                {% if user not in request.user.profile.following %}
+                                <a href="{% url 'follow' user %}" class="btn  text-white rounded-pill">Seguir</a>
+                                {% else %}
+                                <a href="{% url 'unfollow' user %}" class="btn  text-white rounded-pill">Dejar de seguir</a>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                        
                     </div>
 
                 </div>
@@ -34,52 +42,19 @@
         <!-- Center -->
         <div class="content">
 
-            <div id="inputTweetArea" class="tweet-wrap">
-                <div class="d-flex">
-                    <div class="col-xs">
-                        <!-- Image form -->
-                        <img src="{{ request.user.usuario.imagen.url }}" alt="" class="avator">
-                        <!-- Formulario -->
-                    </div>
-
-                    <!-- Formulario -->
-                    <form class="col pr-0" method="POST">
-                        {% csrf_token %}
-                        {{ formulario.contenido }}
-                        <div class="container d-flex" style="padding: 1rem 0 0 0;">
-                            <div id="leftBtn">
-                                <div id="charBadge" class="badge badge-pill badge-primary ml-2"
-                                    style="display: flex;align-items: center;width: 50%;justify-content: center;">
-                                    <div id="charCountArea">140</div>
-                                </div>
-                            </div>
-
-                            <div id="rightBtn">
-                                <button class="btn rounded-pill"
-                                    style="width: 100%;">Tweet</button>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- Formulario -->
-
-                </div>
-                <div class="d-flex justify-content-center mt-2">
-                </div>
-            </div>
 
             <!-- Tweets -->
-            {% for posteo in posteos %}
+            {% for post in posteos %}
             <div id="tweetCards">
                 <!-- FOR LOOP HERE -->
                 <div class="tweet-wrap" style="border-radius:20px">
                     <div class="tweet-header">
-                        <img src="{{ posteo.usuario_posteo.usuario.imagen.url }}"
+                        <img src="{{ post.usuario_posteo.usuario.imagen.url }}"
                             alt="" class="avator">
                         <div class="tweet-header-info">
-                            <a href="{% url 'Perfil' posteo.usuario_posteo %}">
-                            {{posteo.usuario_posteo.first_name}}</a><span>@{{posteo.usuario_posteo.username}}</span><span>{{ posteo.hora_posteo|naturaltime }}
+                            {{ post.usuario_posteo.first_name }} <span>@{{ post.usuario_posteo.username }}</span><span>{{ post.timestamp|naturaltime }}
                             </span>
-                            <p>{{posteo.contenido}}</p>
+                            <p>{{ post.contenido }}</p>
                         </div>
                     </div>
                     <div class="tweet-info-counts">
@@ -125,21 +100,21 @@
                         </div>
 
                         <!-- DELETE -->
-                        {% if request.user == posteo.usuario_posteo %}
                         <div class="trash">
-                            <a href="{% url 'BorrarTweet' posteo.id %}" style="background: white; border: none;">
-                                <i class="fa-trash" style="color:#63849e; font-size: 20px" aria-hidden="true"></i>
-                                
+                            <a href="{% url 'BorrarTweet' post.id %}" style="background: white; border: none;">
+                                <i class="fa fa-trash-o" style="color:#657786; font-size: 20px" aria-hidden="true"></i>
                             </a>
                         </div>
-                        {% endif %}
                         <!-- END-DELETE -->
                     </div>
                 </div>
                 <!-- FOR LOOP HERE -->
+
             </div>
             {% endfor %}
             <!-- EndTweets -->
+
+
         </div>
         <!-- End Center -->
 
@@ -158,4 +133,5 @@
             </div>
         </div>
     </div>
+
 {% endblock content %}
