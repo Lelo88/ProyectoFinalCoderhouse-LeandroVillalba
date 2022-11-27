@@ -67,8 +67,17 @@ def editar(request):
 @login_required
 def seguir_usuario(request, nombre_usuario):
     usuario_actual = request.user
-    seguir_usuario = User.objects.get(username = nombre_usuario)
-    seguir_usuario_id = seguir_usuario
-    rel = Relaciones(de_usuario = usuario_actual, a_usuario=seguir_usuario_id)
+    a_usuario = User.objects.get(username = nombre_usuario)
+    a_usuario_id = a_usuario
+    rel = Relaciones(de_usuario = usuario_actual, a_usuario=a_usuario_id)
     rel.save()
     return redirect('Inicio')
+
+@login_required
+def dejar_seguir(request, username):
+	current_user = request.user
+	to_user = User.objects.get(username=username)
+	a_usuario_id = to_user.id
+	rel = Relaciones.objects.filter(de_usuario=current_user, a_usuario=a_usuario_id)
+	rel.delete()
+	return redirect('Inicio')

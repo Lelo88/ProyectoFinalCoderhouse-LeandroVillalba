@@ -16,15 +16,15 @@
 
                         <p class="card-text">{{ usuario.usuario.biografia }}</p>
                         <h6 class="card-title font-weight-bold">
-                        {{ usuario.usuario.seguidores.count }} Seguidores  
-                        {{ usuario.usuario.seguir.count }} Siguiendo
+                        {{usuario.usuario.seguidores.count}} Seguidores  
+                        {{user.usuario.seguir.count}} Siguiendo
                         </h6>
                         {% if request.user.is_authenticated %}
-                            {% if usuario.usuario.username != request.user.username %}
-                                {% if user.usuario not in request.user.seguir %}
-                                <a href="{% url 'Seguir' user %}" class="btn text-white rounded-pill">Seguir</a>
+                            {% if usuario.username != request.user.username %}
+                                {% if usuario not in request.user.usuario.seguir %}
+                                <a href="{% url 'Seguir' usuario.username %}" class="btn text-white rounded-pill">Seguir</a>
                                 {% else %}
-                                <a href="" class="btn text-white rounded-pill">Dejar de seguir</a>
+                                <a href="{% url 'DejarSeguir' usuario.username %}" class="btn text-white rounded-pill">Dejar de seguir</a>
                                 {% endif %}
                             {% endif %}
                         {% endif %}

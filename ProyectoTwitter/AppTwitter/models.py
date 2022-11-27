@@ -37,6 +37,6 @@ class Relaciones(models.Model):
     a_usuario = models.ForeignKey(User, related_name='related_to', on_delete=models.CASCADE)
     
     def __str__(self):
-        return f'{self.de_usuario} to {self.a_usuario}'
+        return f'{self.de_usuario} a {self.a_usuario}'
     
     
