@@ -100,11 +100,15 @@
                         </div>
 
                         <!-- DELETE -->
+                        {% if request.user == post.usuario_posteo %}
                         <div class="trash">
                             <button class="btn-danger">
-                                <a href="{% url 'BorrarTweet' post.id %}" class="btn-danger text-light">Eliminar</a>
+                            <a href="{% url 'BorrarTweet' post.id %}" class="btn-danger text-light">Eliminar</a>
                             </button>
+                            
+                        
                         </div>
+                        {% endif %}
                         <!-- END-DELETE -->
                     </div>
                 </div>
