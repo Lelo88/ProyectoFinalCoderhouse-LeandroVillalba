@@ -11,15 +11,15 @@
         <form method="POST">
             {% csrf_token %}
             <div class="input-wrapper">
-                <label for="user-name-id">First Name</label>
+                <label for="user-name-id">Nombre</label>
                 {{ formulario_registro.first_name }}
             </div>
             <div class="input-wrapper">
-                <label for="user-name-id">Last Name</label>
+                <label for="user-name-id">Apellido</label>
                 {{ formulario_registro.last_name }}
             </div>
             <div class="input-wrapper">
-                <label for="user-name-id">Username</label>
+                <label for="user-name-id">Nombre de usuario</label>
                 {{ formulario_registro.username }}
             </div>
             <div class="input-wrapper">
@@ -28,11 +28,11 @@
             </div>
 
             <div class="input-wrapper">
-                <label for="password-id">Password</label>
+                <label for="password-id">Contraseña</label>
                 {{ formulario_registro.password1 }}
             </div>
             <div class="input-wrapper">
-                <label for="password-id">Confirm Password</label>
+                <label for="password-id">Confirmar contraseña</label>
                 {{ formulario_registro.password2 }}
             </div>
             <div class="input-wrapper">
@@ -40,7 +40,7 @@
                 {{ formulario_perfil.biografia }}
             </div>
             <div class="input-wrapper">
-                <label>Biografia</label>
+                <label>Imagen de perfil</label>
                 {{ formulario_perfil.imagen }}
             </div>
             <button class="twitter-btn">Registrarse</button>
