@@ -31,7 +31,7 @@ def registro(request):
             perfil_usuario = formulario_perfil.save(commit=False)
             perfil_usuario.usuario = usuario
             perfil_usuario.save()
-            return redirect('Inicio')
+            return redirect('Login')
     
     else:
         formulario_registro = Registro()
