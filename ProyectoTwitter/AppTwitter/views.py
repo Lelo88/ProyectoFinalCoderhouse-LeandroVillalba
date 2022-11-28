@@ -34,12 +34,14 @@ def registro(request):
         
     contexto = {'formulario':formulario_registro}
     return render(request, '03_registro.html', contexto)
-            
+
+@login_required           
 def borrar_tweet(request, id_posteo):
     posteo = Posteo.objects.get(id=id_posteo)
     posteo.delete()
     return redirect('Inicio')
 
+@login_required
 def perfil(request, nombre_usuario):
     nombre_usuario = User.objects.get(username=nombre_usuario)
     posteos =  Posteo.objects.filter(usuario_posteo=nombre_usuario)

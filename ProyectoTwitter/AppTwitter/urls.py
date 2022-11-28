@@ -7,10 +7,10 @@ from .views import borrar_tweet, dejar_seguir, editar, inicio, perfil, registro,
 
 
 urlpatterns = [
-    path('', inicio, name = 'Inicio'),
+    path('inicio/', inicio, name = 'Inicio'),
     path('registro/', registro, name = 'Registro'),
-    path('login/', LoginView.as_view(template_name='04_login.html'), name='Login'),
-    path('login/', LogoutView.as_view(), name='Logout'),
+    path('', LoginView.as_view(template_name='04_login.html'), name='Login'),
+    path('logout/', LogoutView.as_view(), name='Logout'),
     path('borrado/<int:id_posteo>', borrar_tweet, name='BorrarTweet'),
     path('perfil/<str:nombre_usuario>/', perfil, name='Perfil'),
     path('editar/',editar ,name='Editar'),
