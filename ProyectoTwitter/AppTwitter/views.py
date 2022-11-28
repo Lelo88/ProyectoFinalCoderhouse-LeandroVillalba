@@ -83,3 +83,6 @@ def dejar_seguir(request, username):
 	rel = Relaciones.objects.filter(de_usuario=current_user, a_usuario=a_usuario_id)
 	rel.delete()
 	return redirect('Inicio')
+
+def about(request):
+    return render(request, '07_aboutme.html')

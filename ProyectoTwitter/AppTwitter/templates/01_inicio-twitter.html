@@ -26,7 +26,7 @@
                         {{ request.user.usuario.seguidores.count }} Seguidores  
                         {{ request.user.usuario.seguir.count }} Seguidos
                         </h6>
-                        <a href="#" class="btn  text-white rounded-pill">Mi perfil</a>
+                        <a href="{% url 'Perfil' request.user %}" class="btn  text-white rounded-pill">Mi perfil</a>
                     </div>
 
                 </div>
@@ -133,10 +133,12 @@
                         <!-- DELETE -->
                         {% if request.user == posteo.usuario_posteo %}
                         <div class="trash">
+                            <button class="btn-danger rounded-0"
+                            style="width: 100%;""> Eliminar
                             <a href="{% url 'BorrarTweet' posteo.id %}" style="background: white; border: none;">
-                                <i class="fa-trash" style="color:#63849e; font-size: 20px" aria-hidden="true"></i>
-                                
-                            </a>
+                            </button>  
+                            
+                        </i>
                         </div>
                         {% endif %}
                         <!-- END-DELETE -->
@@ -154,12 +156,12 @@
         <div class="sidebar m-5 d-none d-xl-block">
             <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                    Who to Follow
+                    A quién seguir
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
+                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@dragonballz</a></li>
+                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@TolkienFriends</a></li>
+                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@romis</a></li>
                 </ul>
             </div>
         </div>

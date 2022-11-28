@@ -2,6 +2,7 @@
 
 
 {% block content %}
+<br><br>
 <div id="main" class="container-fluid d-flex">
     <div class="">
         <div id="inputTweetArea" class="tweet-wrap2">
@@ -20,14 +21,15 @@
                         {{ formulario_usuario.first_name }}
                     </div>
                     <div class="input-wrapper">
-                        <label for="user-name-id">Username</label>
+                        <label for="user-name-id">Nombre de usuario</label>
                         {{ formulario_usuario.username }}
                     </div>
                     <div class="input-wrapper">
-                        <label>Bio</label>
+                        <label>Biografia</label>
                         {{ formulario_perfil.biografia }}
                     </div>
                     <div class="input-wrapper">
+                        <label>Imagen de perfil</label>
                         {{ formulario_perfil.imagen }}
                     </div>
 
@@ -40,5 +42,6 @@
     </div>
     <!-- End Center -->
 </div>
+<br><br>
 {% endblock content %}
     
