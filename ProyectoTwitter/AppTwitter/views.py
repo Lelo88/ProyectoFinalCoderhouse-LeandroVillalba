@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def inicio(request):
     posteos = Posteo.objects.all()
+    usuarios = User.objects.all()
     if request.method == 'POST':
         formulario_posteo = FormularioPosteo(request.POST)
         if formulario_posteo.is_valid():
@@ -18,7 +19,7 @@ def inicio(request):
     else:
         formulario_posteo = FormularioPosteo()
     
-    contexto = {'posteos': posteos, 'formulario': formulario_posteo}
+    contexto = {'posteos': posteos, 'formulario': formulario_posteo, 'usuarios':usuarios}
     return render(request, '01_inicio-twitter.html', contexto)
 
 def registro(request):
@@ -47,9 +48,10 @@ def borrar_tweet(request, id_posteo):
 
 @login_required
 def perfil(request, nombre_usuario):
+    usuarios = User.objects.all()
     nombre_usuario = User.objects.get(username=nombre_usuario)
     posteos =  Posteo.objects.filter(usuario_posteo=nombre_usuario)
-    contexto = {'usuario': nombre_usuario, 'posteos': posteos}
+    contexto = {'usuario': nombre_usuario, 'posteos': posteos, 'usuarios': usuarios}
     return render(request, '05_perfil.html', contexto)
 
 @login_required

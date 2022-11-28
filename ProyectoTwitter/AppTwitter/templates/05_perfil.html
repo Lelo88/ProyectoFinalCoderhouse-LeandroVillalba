@@ -123,15 +123,14 @@
         <div class="sidebar m-5 d-none d-xl-block">
             <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                    Seguir a
+                    A quién seguir
                 </div>
+                {% for usu in usuarios %}
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@LionelMessi</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@Coderhouse</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@CAIndependiente</a></li>
+                    <li class="list-group-item"><a href="{% url 'Perfil' usu %}" style="text-decoration: none;color: #2696f8;">@{{usu.username}}</a></li>
                 </ul>
+            {% endfor %}   
             </div>
         </div>
     </div>
-
 {% endblock content %}

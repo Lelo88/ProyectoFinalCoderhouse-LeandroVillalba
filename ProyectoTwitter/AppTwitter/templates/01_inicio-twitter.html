@@ -158,11 +158,11 @@
                 <div class="card-header">
                     A quién seguir
                 </div>
+                {% for usuario in usuarios %}
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@dragonballz</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@TolkienFriends</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@romis</a></li>
+                    <li class="list-group-item"><a href="{% url 'Perfil' usuario %}" style="text-decoration: none;color: #2696f8;">@{{usuario.username}}</a></li>
                 </ul>
+            {% endfor %}   
             </div>
         </div>
     </div>
