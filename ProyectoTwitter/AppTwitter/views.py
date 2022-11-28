@@ -24,15 +24,19 @@ def inicio(request):
 def registro(request):
     if request.method == 'POST':
         formulario_registro = Registro(request.POST)
-        if formulario_registro.is_valid():
-            formulario_registro.save()
-            
+        formulario_perfil = EditarPerfil(request.POST,request.FILES)
+        if formulario_registro.is_valid() and formulario_perfil.is_valid():
+            usuario = formulario_registro.save()
+            perfil_usuario = formulario_perfil.save(commit=False)
+            perfil_usuario.usuario = usuario
+            perfil_usuario.save()
             return redirect('Inicio')
     
     else:
         formulario_registro = Registro()
+        formulario_perfil = EditarPerfil()
         
-    contexto = {'formulario':formulario_registro}
+    contexto = {'formulario_registro':formulario_registro,'formulario_perfil' :formulario_perfil}
     return render(request, '03_registro.html', contexto)
 
 @login_required           
@@ -52,7 +56,7 @@ def perfil(request, nombre_usuario):
 def editar(request):
     if request.method == 'POST':
         formulario_usuario = EditarUsuario(request.POST, instance = request.user)
-        formulario_perfil = EditarPerfil(request.POST, request.FILES, instance=request.user.usuario)
+        formulario_perfil = EditarPerfil(request.POST, request.FILES, instance = request.user.usuario)
         
         if formulario_usuario.is_valid() and formulario_perfil.is_valid():
             formulario_usuario.save()

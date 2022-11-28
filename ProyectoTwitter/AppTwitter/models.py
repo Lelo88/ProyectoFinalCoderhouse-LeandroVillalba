@@ -5,7 +5,7 @@ from django.utils import timezone
 class Usuario(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     biografia = models.CharField(default='¡Bienvenido a Twitter!', max_length=100)
-    imagen = models.ImageField(default='default.png')
+    imagen = models.ImageField(default='202-2026524_person-icon-default-user-icon-png.png')
     
     def __str__(self):
         return f'{self.usuario.username}'

@@ -12,30 +12,37 @@
             {% csrf_token %}
             <div class="input-wrapper">
                 <label for="user-name-id">First Name</label>
-                {{ formulario.first_name }}
+                {{ formulario_registro.first_name }}
             </div>
             <div class="input-wrapper">
                 <label for="user-name-id">Last Name</label>
-                {{ formulario.last_name }}
+                {{ formulario_registro.last_name }}
             </div>
             <div class="input-wrapper">
                 <label for="user-name-id">Username</label>
-                {{ formulario.username }}
+                {{ formulario_registro.username }}
             </div>
             <div class="input-wrapper">
                 <label for="user-name-id">Email</label>
-                {{ formulario.email }}
+                {{ formulario_registro.email }}
             </div>
 
             <div class="input-wrapper">
                 <label for="password-id">Password</label>
-                {{ formulario.password1 }}
+                {{ formulario_registro.password1 }}
             </div>
             <div class="input-wrapper">
                 <label for="password-id">Confirm Password</label>
-                {{ formulario.password2 }}
+                {{ formulario_registro.password2 }}
             </div>
-
+            <div class="input-wrapper">
+                <label>Biografia</label>
+                {{ formulario_perfil.biografia }}
+            </div>
+            <div class="input-wrapper">
+                <label>Biografia</label>
+                {{ formulario_perfil.imagen }}
+            </div>
             <button class="twitter-btn">Registrarse</button>
         </form>
 
