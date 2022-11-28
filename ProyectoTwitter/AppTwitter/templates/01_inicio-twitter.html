@@ -133,12 +133,11 @@
                         <!-- DELETE -->
                         {% if request.user == posteo.usuario_posteo %}
                         <div class="trash">
-                            <button class="btn-danger rounded-0"
-                            style="width: 100%;""> Eliminar
-                            <a href="{% url 'BorrarTweet' posteo.id %}" style="background: white; border: none;">
-                            </button>  
+                            <button class="btn-danger">
+                            <a href="{% url 'BorrarTweet' posteo.id %}" class="btn-danger text-light">Eliminar</a>
+                            </button>
                             
-                        </i>
+                        
                         </div>
                         {% endif %}
                         <!-- END-DELETE -->
