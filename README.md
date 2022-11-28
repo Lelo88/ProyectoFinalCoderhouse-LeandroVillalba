@@ -6,4 +6,6 @@ Autor: Leandro Gabriel Villalba
 
 En este proyecto se intenta emular en posteos y seguimientos de usuarios a la red social Twitter. Para ello, se crearon tanto el modelo de usuario, de posteo y de relaciones entre seguidores. Se utilzaron plantillas predeterminadas que, practicamente en su totalidad, recrean a una version antigua de la red social Twitter.
 
-A pesar de que el resto de las funcionalidades no pudieron crearse de manera debida, mi propuesta se basa en creacion de perfiles, posteos, seguimiento y no seguimiento de usuarios. 
+A pesar de que el resto de las funcionalidades no pudieron crearse de manera debida, mi propuesta se basa en creacion de perfiles, de posteos y su eliminación, seguimiento y no seguimiento de usuarios. 
+
+Enlace del video de muestra de aplicación: https://youtu.be/6lVIhnR2gdw
